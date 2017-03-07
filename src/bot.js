@@ -100,7 +100,9 @@ class Bot extends EventEmitter {
 
     this.on('user_change', message => {
       const user = this.find(message.user.id);
-      Object.assign(user, message.user);
+      if (user) {
+        Object.assign(user, message.user);  
+      }
     });
 
     this.on('message_changed', message => {
